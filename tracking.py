@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-
-#trial using bash calls no html2text library
 import requests
 import subprocess # to execute bash commands
 import sys
@@ -33,14 +31,7 @@ f = open("raw_html", "w+")
 f.write(r.text)
 f.close()
 
-#raw_html=r.text
-#print(raw_html)
-#raw_html = str(raw_html , 'utf-8')
-
-
-
 view_html = subprocess.Popen(["html2text", "raw_html"])
 output = view_html.communicate()
 view_html.wait()
-#view_html = subprocess.Popen("html2text template", shell=True)
 print(output)
