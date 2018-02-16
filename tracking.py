@@ -23,7 +23,7 @@ except(IndexError, ValueError):
     sys.exit(2)    
 
 request_url = "http://ipsweb.ptcmysore.gov.in/ipswebtracking/IPSWeb_item_events.asp?itemid=" + tracking_number
-print(request_url)
+#print(request_url)
 r = requests.get(request_url)
 print(r.status_code)
 
