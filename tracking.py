@@ -1,36 +1,46 @@
 #!/usr/bin/python3
 
+#trial using bash calls no html2text library
 import requests
-from bs4 import BeautifulSoup
-from html.parser import HTMLParser
-import re
+import subprocess # to execute bash commands
+import sys
+try:
+    check_for_package = subprocess.Popen(("dpkg","-s","html2text"), stdout=subprocess.PIPE) 
+    output = subprocess.check_output(("grep", "Status"), stdin=check_for_package.stdout)
+    check_for_package.wait()
+    opstr=str(output, 'utf-8')
+    print(opstr)
+    if opstr == "Status: install ok installed\n" :
+        print("Package installed")
 
-r = requests.get("http://ipsweb.ptcmysore.gov.in/ipswebtracking/IPSWeb_item_events.asp?itemid=RT404715658HK&Submit=Submit")
+except:
+    print("installing html2text..............................")
+    install_pkg = subprocess.check_call("sudo apt install html2text", shell=True)
+
+try:
+    tracking_number = str(sys.argv[1])
+
+except(IndexError, ValueError):
+    print("please enter a tracking number of a valid format")
+    sys.exit(2)    
+
+request_url = "http://ipsweb.ptcmysore.gov.in/ipswebtracking/IPSWeb_item_events.asp?itemid=" + tracking_number
+print(request_url)
+r = requests.get(request_url)
 print(r.status_code)
-#print(r.text)
-html = r.text
 
-soup_html = BeautifulSoup(html, 'html.parser')
-#print(soup_html)
-#print(soup_html.prettify())
-#print (parsed_html.body.__find('div', attrs={'class':'container'}).text)
-html_to_parse = soup_html.prettify()
+f = open("raw_html", "w+")
+f.write(r.text)
+f.close()
+
+#raw_html=r.text
+#print(raw_html)
+#raw_html = str(raw_html , 'utf-8')
 
 
-# create a subclass and override the handler methods
-class MyHTMLParser(HTMLParser):
-    #def handle_starttag(self, tag, attrs):
-        #print ("Encountered a start tag:", tag)
-    #def handle_endtag(self, tag):
-        #print ("Encountered an end tag :", tag)
-    def handle_data(self, data):
-        #print ("Encountered some data  :", data)
-        print(data)
-# instantiate the parser and fed it some HTML
-parser = MyHTMLParser()
-#print(parser.feed(html_to_parse))
-html_raw = parser.feed(html_to_parse)
-regex = re.compile(r"\s*(<[^<>]+>)\s*")
-html_final = regex.sub("\g<1>", html_raw)
-print(html_final)
 
+view_html = subprocess.Popen(["html2text", "raw_html"])
+output = view_html.communicate()
+view_html.wait()
+#view_html = subprocess.Popen("html2text template", shell=True)
+print(output)
