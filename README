@@ -1,1 +1,4 @@
- write a tracking srcipt using ipswebtracking wesite use python request and receive libreaires to do it 
+This Python script gives you a CLI for tracking parcels to India. To use this script make sure it is executable & then do 
+./$Script_nmae.py Tracking_Number
+
+This script has been tested on Ubuntu 16.04 and 17.10
