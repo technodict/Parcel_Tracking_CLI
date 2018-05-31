@@ -1,7 +1,11 @@
 #!/usr/bin/python3
+
+#trial using bash calls no html2text library
+
 import requests
 import subprocess # to execute bash commands
-import sys
+import time
+
 try:
     check_for_package = subprocess.Popen(("dpkg","-s","html2text"), stdout=subprocess.PIPE) 
     output = subprocess.check_output(("grep", "Status"), stdin=check_for_package.stdout)
@@ -15,23 +19,21 @@ except:
     print("installing html2text..............................")
     install_pkg = subprocess.check_call("sudo apt install html2text", shell=True)
 
-try:
-    tracking_number = str(sys.argv[1])
 
-except(IndexError, ValueError):
-    print("please enter a tracking number of a valid format")
-    sys.exit(2)    
 
-request_url = "http://ipsweb.ptcmysore.gov.in/ipswebtracking/IPSWeb_item_events.aspx?itemid=" + tracking_number
-#print(request_url)
-r = requests.get(request_url)
-print(r.status_code)
 
-f = open("raw_html", "w+")
-f.write(r.text)
-f.close()
+#r = requests.get("http://ipsweb.ptcmysore.gov.in/ipswebtracking/IPSWeb_item_events.asp?itemid=RT404715658HK&Submit=Submit")
+#print(r.status_code)
 
-view_html = subprocess.Popen(["html2text", "raw_html"])
+#raw_html=r.text
+#print(raw_html)
+#raw_html = str(raw_html , 'utf-8')
+
+view_html = subprocess.Popen(["html2text", "www.google.com"])
+time.sleep(3)
 output = view_html.communicate()
 view_html.wait()
+#view_html = subprocess.Popen("html2text template", shell=True)
 print(output)
+#print(view_html)
+

@@ -1,0 +1,114 @@
+
+
+<html>
+<head>
+<title>IPS Web Tracking/Item Events</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/ipswt" rel="stylesheet" type="text/css">
+<link href="css/ipswt.css" rel="stylesheet" type="text/css">
+<script language=javascript type="text/Javascript">
+
+	var popUpwindow = null;
+
+	function showImagePopup(imageUrl) {
+
+		var width = 400; // popup width
+		var height = 300;  // popup height
+		var left = (screen.width - width) / 2;
+		var top = (screen.height - height) / 2;
+
+		if (popUpwindow != null) popUpwindow.close();
+
+		var params = 'top=' + top.toString() + ',left=' + left.toString() + ',width=' + width.toString() + ',height=' + height.toString();
+		popUpwindow = window.open(imageUrl,'', params);
+		popUpwindow.location.href = imageUrl;
+		popUpwindow.focus();
+	}
+</script>
+
+
+<style type="text/css">
+      .style1
+      {
+         width: 1297px;
+      }
+   .style2
+		{
+			width: 104px;
+		}
+</style>
+</head>
+
+
+
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+ 
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td class="style1"><img src="img/ipswebtrack.jpg" width="454" height="54"></td>
+    <td align="right" valign="middle">&nbsp;&nbsp;</td>
+  </tr>
+  <tr align="center"> 
+    <td colspan="2"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td class="style2">&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr> 
+          <td class="style2"><img src="img/sp.gif" name="iep" height="1" width="70" border="0"></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr> 
+          <td class="style2">&nbsp;</td>
+          <td> <table width="95%" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr> 
+                  <td class="tabproperty"><wap> </wap> <table id="200" width="100%" border="0" cellspacing="1" cellpadding="3">
+                      <tbody>
+                        <tr align="left" class="tabl2"> 
+                          <td colspan="7"><strong>&nbsp;ITEM&nbsp;n&deg;&nbsp;CK423037469IN</strong></td>
+                          <td align="center"><a href="IPSWeb_submit_aspx.htm">new search</a></td>
+                        </tr>
+                        <tr align="center"> 
+                          <td class="tabmen" width="10%">Local Date and Time</td>
+                          <td class="tabmen" width="10%">Country</td>
+                          <td class="tabmen" width="10%">Location</td>
+                          <td class="tabmen" width="15%">Event Type</td>
+                          <td class="tabmen" width="10%">Mail Category</td>
+                          <td class="tabmen" width="15%">Next Office</td>
+                          <td class="tabmen" width="25%" colspan="2">Extra Information</td>						  
+						 
+                        </tr>
+								
+										<tr class="tabl1">
+											<td align="center" width="10%">5/25/2018 1:33:18 PM</td>
+											<td align="center" width="10%">India</td>
+											<td align="center" width="10%">Dharwad H.O</td>
+											<td align="center" width="15%">Receive item from customer (Otb)</td>
+											<td align="center" width="10%"> </td>
+											<td align="center" width="15%"> </td>
+											<td align="center" width="15%"></td>
+											<td align="center" width="10%"> </td>
+										</tr> 
+								
+                      </tbody>
+                    </table></td>
+                </tr>
+              </tbody>
+            </table></td>
+        </tr>
+      </table> 
+      <br>
+      <br>
+	  </td>
+  </tr>
+</table>
+
+<br>
+<br>
+</body>
+</html>
